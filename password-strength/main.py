@@ -10,7 +10,13 @@ class Password:
         if self._common_check(password):
             return "Your password is very common and was found in a database. You should generate a more secure one"
         unique_count = self._check_special_character_diversity(password)
-        self._count += unique_count / 2        
+        digit_count = self._check_digit(password)
+        caseCount = self._case_count(password)
+        self._count += unique_count / 2
+        self._count += len(password) / 2
+        self._count += digit_count / 2
+        self._count += caseCount[0] / 2
+        self._count += caseCount[1] / 2       
           
     def _common_check(self, password: str) -> bool:
         hash_pswd = self._hash(password)
@@ -32,3 +38,23 @@ class Password:
         symbols = [char for char in password if char in special_characters]
         unique_symbols_count = len(set(symbols))
         return unique_symbols_count
+
+    def _check_digits(self, password) -> list:
+      count = 0
+      for i in password:
+        count+=1
+
+      return count
+
+    def _case_count(password) -> list:
+      upperCount = 0
+      lowerCount = 0
+
+      for i in password:
+        if i.isupper():
+          upperCount += 1
+
+        if i.islower():
+          lowerCount += 1
+
+      return [upperCount, lowerCount]

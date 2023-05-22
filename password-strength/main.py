@@ -23,3 +23,9 @@ class Password:
             h = hashlib.new('sha1')
             h.update(str(password).encode()) 
             return h.hexdigest()
+        
+        def _check_special_character_diversity(self, password) -> int:
+            special_characters = "!@#$%^&*()_+{}[]|;:,.<>/?"
+            symbols = [char for char in password if char in special_characters]
+            unique_symbols_count = len(set(symbols))
+            return unique_symbols_count

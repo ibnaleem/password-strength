@@ -16,8 +16,17 @@ class Password:
         self._count += len(password) / 2
         self._count += digit_count / 2
         self._count += caseCount[0] / 2
-        self._count += caseCount[1] / 2       
-          
+        self._count += caseCount[1] / 2
+        
+        if self._count == 13:
+            return "Your password is very strong and was not found in a database"
+        elif 13 > self._count > 10:
+            return "Your password is strong and was not found in a database"
+        elif 10 > self._count > 8:
+            return "Your password is moderate. Try using a diverse range of numbers, case letters and symbols.
+        else:
+            return "Your password is weak. Try using symbols, case letters and numbers
+    
     def _common_check(self, password: str) -> bool:
         hash_pswd = self._hash(password)
         url = f"https://api.pwnedpasswords.com/range/{hash_pswd}"
@@ -39,7 +48,7 @@ class Password:
         unique_symbols_count = len(set(symbols))
         return unique_symbols_count
 
-    def _check_digits(self, password) -> list:
+    def _check_digits(self, password) -> int:
       count = 0
       for i in password:
         count+=1

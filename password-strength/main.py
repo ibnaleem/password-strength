@@ -23,7 +23,7 @@ class Password:
         elif 13 > self._count > 10:
             return "Your password is strong and was not found in a database"
         elif 10 > self._count > 8:
-            return "Your password is moderate. Try using a diverse range of numbers, case letters and symbols.
+            return "Your password is moderate. Try using a diverse range of numbers, case letters and symbols."
         else:
             return "Your password is weak. Try using symbols, case letters and numbers
     

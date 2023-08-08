@@ -1,2 +1,2 @@
 # Password Strength Checker
-a reliable password strength
+a reliable password strength checker
